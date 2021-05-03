@@ -30,7 +30,7 @@ I am using POSTGRESQL to store the data of the cafés (places), users and all ot
 
 ### Requirements:
 
-| depency                                                      | version                                                            |
+| dependency                                                      | version                                                            |
 | :----------------------------------------------------------- | :----------------------------------------------------------------- |
 | [`python`](https://www.python.org/downloads/)                       | `v3.9.4`                                                    |
 | [`NodeJS`](https://nodejs.org/en/download/)                       | `v14.16.1`                                                    |
