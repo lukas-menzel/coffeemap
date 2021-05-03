@@ -18,6 +18,8 @@ If you are interested in contributing to this project reach out to @lukasmenzel.
 
 ## Architectural overview
 
+![](docs/architecture.png)
+
 ### Database schema
 I am using POSTGRESQL to store the data of the cafés (places), users and all other related data. 
 
@@ -39,7 +41,7 @@ Instructions for macOS and Linux distributions assume you are using a Bash shell
 
 **General Instructions** 
 
-- Clone repo 
+- Clone repo [https://github.com/lukas-menzel/coffeemap.git](https://github.com/lukas-menzel/coffeemap.git)
   
 **FrontEnd:**
 
