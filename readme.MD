@@ -1,4 +1,4 @@
-coffeemap.berlin
+#coffeemap.berlin
 
 >Discover new cafés in Berlin 
 
