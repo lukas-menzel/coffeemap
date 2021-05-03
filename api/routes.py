@@ -89,6 +89,7 @@ def catch_all(path):
 @app.route('/api/place', methods=['GET'])
 def get_all_places():
 
+    # SQL query: SELECT * FROM place
     places = Place.query.all()
 
     output = []
@@ -128,8 +129,8 @@ def get_all_places():
 
 @app.route('/api/place/<int:id>', methods=['GET'])
 def get_single_place(id):
-
-    place = Place.query.filter_by().first()
+    # SQL query: SELECT * FROM place WHERE id = id LIMIT 1
+    place = Place.query.filter_by(id=id).first()
 
     place_data = {}
     place_data['id'] = place.id
@@ -178,7 +179,7 @@ def create_place():
 @app.route('/api/place/<id>', methods=['PUT'])
 @flask_praetorian.auth_required
 def update_place():
-    # SELECT ALL FROM
+    # SQL query: SELECT * FROM place WHERE id = id LIMIT 1
     place = Place.query.filter_by(id=id).first()
 
     if not place:
