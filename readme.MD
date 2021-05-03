@@ -43,13 +43,13 @@ Instructions for macOS and Linux distributions assume you are using a Bash shell
 
 - Clone repo [https://github.com/lukas-menzel/coffeemap.git](https://github.com/lukas-menzel/coffeemap.git)
   
-**FrontEnd:**
+**Frontend:**
 
-1. Install all dependencies yarn install
+1. Install all dependencies `yarn install`
 
-2. Run the application in development mode yarn start (runs on localhost:3000)
+2. Run the application in development mode `yarn start` (runs on localhost:3000)
 
-3. To deploy to production you can create a minified bundle yarn run build
+3. To deploy to production you can create a minified bundle `yarn run build`
 
 
 **Backend:**
