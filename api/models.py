@@ -17,7 +17,7 @@ class User(db.Model):
     email_marketing_accepted = db.Column(db.Boolean(), nullable=False)
     roles = db.Column(db.Text)
     places = db.relationship('Place', secondary="placestoenduser")
-    reviews = db.relationship('Review', backref='review', lazy=True)
+    reviews = db.relationship('Review', backref='reviews', lazy=True)
     posts = db.relationship('Post', backref='posts', lazy=True)
 
     @property
@@ -78,8 +78,8 @@ class Place(db.Model):
     wifi_network_password = db.Column(db.String(length=255))
     food_options = db.Column(db.String(length=255))
     picture_urls = db.Column(db.Text)
-    posts = db.relationship('Post', backref='posts', lazy=True)
-    reviews = db.relationship('Review', backref='reviews', lazy=True)
+    posts = db.relationship('Post', backref='post', lazy=True)
+    reviews = db.relationship('Review', backref='review', lazy=True)
     opening_hours = db.relationship(
         'OpeningHours', backref='opening-hours', lazy=True)
     users = db.relationship('User', secondary="placestoenduser")
@@ -97,7 +97,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer(), primary_key=True)
     place_id = db.Column(db.Integer(), db.ForeignKey('places.id'))
-    user_id = db.Column(db.Integer()), db.ForeignKey('users.id')
+    user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
     post_date = db.Column(db.Date)
     post_text = db.Column(db.Text, nullable=False)
     poast_image_url = db.Column(db.Text)

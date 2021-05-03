@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 967a65d92d22
+Revision ID: 8d993440c2ee
 Revises: 
-Create Date: 2021-05-03 16:42:09.522839
+Create Date: 2021-05-03 20:07:17.892015
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '967a65d92d22'
+revision = '8d993440c2ee'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,17 +29,17 @@ def upgrade():
     sa.Column('website_url', sa.String(length=500), nullable=True),
     sa.Column('facebook_url', sa.String(length=500), nullable=True),
     sa.Column('instagram_url', sa.String(length=500), nullable=True),
-    sa.Column('wifi_available', sa.String(), nullable=True),
-    sa.Column('toilet_available', sa.String(), nullable=True),
-    sa.Column('power_slots_available', sa.String(), nullable=True),
-    sa.Column('alcohol_available', sa.String(), nullable=True),
-    sa.Column('vegan_alternatives_available', sa.String(), nullable=True),
-    sa.Column('laptops_allowed', sa.String(), nullable=True),
-    sa.Column('open_for_takeaway', sa.String(), nullable=True),
-    sa.Column('open_for_delivery', sa.String(), nullable=True),
-    sa.Column('price_espresso', sa.String(), nullable=True),
-    sa.Column('price_filter_coffee', sa.String(), nullable=True),
-    sa.Column('price_cappuccino', sa.String(), nullable=True),
+    sa.Column('wifi_available', sa.Boolean(), nullable=True),
+    sa.Column('toilet_available', sa.Boolean(), nullable=True),
+    sa.Column('power_slots_available', sa.Boolean(), nullable=True),
+    sa.Column('alcohol_available', sa.Boolean(), nullable=True),
+    sa.Column('vegan_alternatives_available', sa.Boolean(), nullable=True),
+    sa.Column('laptops_allowed', sa.Boolean(), nullable=True),
+    sa.Column('open_for_takeaway', sa.Boolean(), nullable=True),
+    sa.Column('open_for_delivery', sa.Boolean(), nullable=True),
+    sa.Column('price_espresso', sa.Numeric(precision=4, scale=2), nullable=True),
+    sa.Column('price_filter_coffee', sa.Numeric(precision=4, scale=2), nullable=True),
+    sa.Column('price_cappuccino', sa.Numeric(precision=4, scale=2), nullable=True),
     sa.Column('wifi_network_name', sa.String(length=255), nullable=True),
     sa.Column('wifi_network_password', sa.String(length=255), nullable=True),
     sa.Column('food_options', sa.String(length=255), nullable=True),
