@@ -21,6 +21,11 @@ class MyJSONEncoder(flask.json.JSONEncoder):
         return super(MyJSONEncoder, self).default(obj)
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+
+
 @app.route('/api/')
 def home():
     return {"Hello": "World"}, 200
@@ -87,14 +92,18 @@ def protected():
     return {"message": f'protected endpoint (allowed user {flask_praetorian.current_user().username})'}
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    print("Hello from catch all")
-    if path != "" and os.path.exists(os.path.join('..', 'build', path)):
-        return app.send_static_file(path)
-    else:
-        return app.send_static_file('index.html')
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def catch_all(path):
+#     print("Hello from catch all")
+#     if path != "" and os.path.exists(os.path.join('..', 'build', path)):
+#         return app.send_static_file(path)
+#     else:
+#         return app.send_static_file('index.html')
 
 
 @app.route('/api/place', methods=['GET'])

@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 
 
 # Initialize flask app for the example
-app = flask.Flask(__name__, static_folder='../build', static_url_path=None)
+app = flask.Flask(__name__, static_folder='./build', static_url_path='/')
 app.debug = True
 app.config['SECRET_KEY'] = '254wsztdrhfjcghvkjlkio8i7ttgh'
 app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
@@ -35,4 +35,4 @@ cors.init_app(app)
 
 # Run the example
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=80)
