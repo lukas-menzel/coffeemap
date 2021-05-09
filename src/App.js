@@ -52,7 +52,7 @@ export default function App() {
           <Route path='/:id'>
             <SinglePlace />
           </Route>
-          <Route exact path="/" >
+          <Route path="/" >
             <HomePage />
           </Route>
         </Switch>
