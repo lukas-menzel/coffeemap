@@ -1,3 +1,5 @@
+from routes import MyJSONEncoder
+from models import User
 import os
 import flask
 import flask_sqlalchemy
@@ -7,7 +9,7 @@ from flask_migrate import Migrate
 
 
 # Initialize flask app for the example
-app = flask.Flask(__name__, static_folder='./build', static_url_path='/')
+app = flask.Flask(__name__, static_folder='/build', static_url_path='/')
 app.debug = True
 app.config['SECRET_KEY'] = '254wsztdrhfjcghvkjlkio8i7ttgh'
 app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
@@ -22,8 +24,6 @@ migrate = Migrate(app, db)
 # Initialize a local database for the example
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/db02'
 db.init_app(app)
-from models import User
-from routes import MyJSONEncoder
 # Initialize the flask-praetorian instance for the app
 guard.init_app(app, User)
 app.json_encoder = MyJSONEncoder
