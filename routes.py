@@ -2,7 +2,7 @@ from app import app, db, guard, cors
 import uuid
 import flask
 import os
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 import flask_sqlalchemy
 import flask_praetorian
 import flask_cors
