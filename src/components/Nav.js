@@ -22,7 +22,7 @@ function Nav() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
           <div className="flex justify-between items-center h-16">
               <div className="flex-shrink-0">
-              <Link to="/"><H1 h1="Coffemap.berlin" /></Link>
+              <Link exact to="/"><H1 h1="Coffemap.berlin" /></Link>
 
               </div>
               <div className="hidden md:block">
