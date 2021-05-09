@@ -2,7 +2,7 @@ from app import app, db, guard, cors
 import uuid
 import flask
 import os
-from flask import request, jsonify, render_template
+from flask import request, jsonify
 import flask_sqlalchemy
 import flask_praetorian
 import flask_cors
@@ -21,15 +21,19 @@ class MyJSONEncoder(flask.json.JSONEncoder):
         return super(MyJSONEncoder, self).default(obj)
 
 
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+
+
 @app.route('/favicon.ico', methods=["GET"])
 def favicon():
     return app.send_static_file('favicon.ico')
-
-
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    return render_template("index.html")
 
 
 @app.route('/api/auth/user', methods=['POST'])
