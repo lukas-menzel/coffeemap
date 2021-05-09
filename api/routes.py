@@ -8,6 +8,17 @@ import flask_praetorian
 import flask_cors
 from flask_migrate import Migrate, MigrateCommand
 from .models import User, Place
+import decimal
+import flask.json
+
+
+class MyJSONEncoder(flask.json.JSONEncoder):
+
+    def default(self, obj):
+        if isinstance(obj, decimal.Decimal):
+            # Convert decimal instances to strings.
+            return str(obj)
+        return super(MyJSONEncoder, self).default(obj)
 
 
 @app.route('/api/')
@@ -119,8 +130,8 @@ def get_all_places():
         place_data['price_cappuccino'] = place.price_cappuccino
         place_data['wifi_network_name'] = place.wifi_network_name
         place_data['wifi_network_password'] = place.wifi_network_password
-        place_data['food_options'] = place.food_options
-        place_data['picture_urls'] = place.picture_urls
+        # place_data['food_options'] = place.food_options
+        # place_data['picture_urls'] = place.picture_urls
 
         output.append(place_data)
 

@@ -24,8 +24,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhos
 db.init_app(app)
 from api import routes
 from .models import User
+from .routes import MyJSONEncoder
 # Initialize the flask-praetorian instance for the app
 guard.init_app(app, User)
+app.json_encoder = MyJSONEncoder
+
 
 # Initializes CORS so that the api_tool can talk to the example app
 cors.init_app(app)

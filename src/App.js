@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  Link
+  
 } from "react-router-dom";
-import { Places } from "./components/Places";
-import { PlacesForm } from "./components/PlacesForm";
-import { Container } from "semantic-ui-react";
-import {login, authFetch, useAuth, logout} from "./auth"
-
+import {useAuth} from "./auth"
+import Registration from "./pages/registration";
+import CreatePlace from"./pages/create-place";
+import PlacesPage from "./pages/places"
+import Footer from "./components/footer";
+import HomePage from "./pages/home";
+import LoginPage from "./pages/login";
+import { SinglePlace } from "./components/SinglePlace"
+import Nav from "./components/Nav";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const [logged] = useAuth();
@@ -23,152 +27,91 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 }
 
 
-
 export default function App() {
+ 
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/secret">Secret</Link>
-            </li>
-          </ul>
-        </nav>
-
+      <header>
+        <Nav />
+      </header>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
-            <Login />
+            <LoginPage />
           </Route>
-          <PrivateRoute path="/secret" component={Secret} />
-          <Route path="/">
-            <Home />
+          <Route path="/register">
+            <Registration />
+          </Route>
+          <Route path="/places">
+            <PlacesPage />
+          </Route>
+          <PrivateRoute path="/create-place">
+            <CreatePlace />
+          </PrivateRoute>
+          <Route path='/:id'>
+            <SinglePlace />
+          </Route>
+          <Route exact path="/" >
+            <HomePage />
           </Route>
         </Switch>
-      </div>
+        <Footer />
+        
     </Router>
+  
   );
 }
 
-function Home() {
-  const [places, setPlaces] = useState([]);
+// // function Home() {
+// //   const [places, setPlaces] = useState([]);
 
-  useEffect(() => {
-    fetch("api/place").then(response =>
-      response.json().then(data => {
-        setPlaces(data.places);
-      })
-    );
-  }, []);
+// //   useEffect(() => {
+// //     fetch("api/place").then(response =>
+// //       response.json().then(data => {
+// //         setPlaces(data.places);
+// //       })
+// //     );
+// //   }, []);
 
-  return (
-    <Places places={places} />
-  )
-}
+// //   return (
+// //     <div>
+// //       <Places places={places} />
+// //       <RegisterForm />
+// //     </div>
+// //  )
+// // }
 
-function Login() {
-  const [email, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+// function Secret() {
+//   const [message, setMessage] = useState('')
+//   const [places, setPlaces] = useState([]);
 
-  const [logged] = useAuth();
+//   useEffect(() => {
+//     fetch("api/place").then(response =>
+//       response.json().then(data => {
+//         setPlaces(data.places);
+//       })
+//     );
+//   }, []);
 
-  const onSubmitClick = (e)=>{
-    e.preventDefault()
-    console.log("You pressed login")
-    let opts = {
-      'email': email,
-      'password': password
-    }
-    console.log(opts)
-    fetch('/api/auth/login', {
-      method: 'post',
-      body: JSON.stringify(opts)
-    }).then(r => r.json())
-      .then(token => {
-        if (token.access_token){
-          login(token)
-          console.log(token)          
-        }
-        else {
-          console.log("Please type in correct username/password")
-        }
-      })
-  }
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value)
-  }
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
-
-  return (
-    <div>
-      <h2>Login</h2>
-      {!logged? <form action="#">
-        <div>
-          <input type="text" 
-            placeholder="email" 
-            onChange={handleUsernameChange}
-            value={email} 
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={handlePasswordChange}
-            value={password}
-          />
-        </div>
-        <button onClick={onSubmitClick} type="submit">
-          Login Now
-        </button>
-      </form>
-      : <button onClick={() => logout()}>Logout</button>}
-    </div>
-  )
-}
-
-function Secret() {
-  const [message, setMessage] = useState('')
-  const [places, setPlaces] = useState([]);
-
-  useEffect(() => {
-    fetch("api/place").then(response =>
-      response.json().then(data => {
-        setPlaces(data.places);
-      })
-    );
-  }, []);
-
-  useEffect(() => {
-    authFetch("/api/auth/protected").then(response => {
-      if (response.status === 401){
-        setMessage("Sorry you aren't authorized!")
-        return null
-      }
-      return response.json()
-    }).then(response => {
-      if (response && response.message){
-        setMessage(response.message)
-      }
-    })
-  }, [])
-  return (
-<PlacesForm
-        onNewPlace={place =>
-          setPlaces(currentPlaces => [place, ...currentPlaces])
-        }
-      />
-  )
-}
+//   useEffect(() => {
+//     authFetch("/api/auth/protected").then(response => {
+//       if (response.status === 401){
+//         setMessage("Sorry you aren't authorized!")
+//         return null
+//       }
+//       return response.json()
+//     }).then(response => {
+//       if (response && response.message){
+//         setMessage(response.message)
+//       }
+//     })
+//   }, [])
+//   return (
+// <PlacesForm
+//         onNewPlace={place =>
+//           setPlaces(currentPlaces => [place, ...currentPlaces])
+//         }
+//       />
+//   )
+// }
