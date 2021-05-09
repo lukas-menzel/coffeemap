@@ -22,9 +22,8 @@ migrate = Migrate(app, db)
 # Initialize a local database for the example
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/db02'
 db.init_app(app)
-from coffeemap import routes
-from .models import User
-from .routes import MyJSONEncoder
+from models import User
+from routes import MyJSONEncoder
 # Initialize the flask-praetorian instance for the app
 guard.init_app(app, User)
 app.json_encoder = MyJSONEncoder
@@ -34,5 +33,5 @@ app.json_encoder = MyJSONEncoder
 cors.init_app(app)
 
 # Run the example
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80)

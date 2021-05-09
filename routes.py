@@ -1,4 +1,4 @@
-from coffeemap import app, db, guard, cors
+from app import app, db, guard, cors
 import uuid
 import flask
 import os
@@ -7,7 +7,7 @@ import flask_sqlalchemy
 import flask_praetorian
 import flask_cors
 from flask_migrate import Migrate, MigrateCommand
-from .models import User, Place
+from models import User, Place
 import decimal
 import flask.json
 
