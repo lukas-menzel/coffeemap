@@ -14,6 +14,8 @@
 ## About
 The goal of this project is to make it easier to discover new cafés in Berlin. To do this you can add on coffeemap.berlin new cafes and discover added cafés. In a later version of the application it will be also possible to review cafés and café owner will get the possibility to create posts e.g. for news about their café. It is also planned to add new discovery features e.g. a search and map. 
 
+The project can be accessed under the following URL: [https://coffeemapberlin.herokuapp.com/](https://coffeemapberlin.herokuapp.com/)
+
 If you are interested in contributing to this project reach out to @lukasmenzel. 
 
 ## Architectural overview
@@ -69,9 +71,9 @@ Instructions for macOS and Linux distributions assume you are using a Bash shell
 
 4. Point Flask to your application: 
 
-    macOS/Linux:  `export FLASK_APP=__init__.py`
+    macOS/Linux:  `export FLASK_APP=app.py`
     
-    Windows: `set FLASK_APP=__init__.py`
+    Windows: `set FLASK_APP=app.py`
   
 5. Enable hot reloading, debug mode, and other useful features for local development:  
 
