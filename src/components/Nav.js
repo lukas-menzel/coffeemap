@@ -22,7 +22,7 @@ function Nav() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
           <div className="flex justify-between items-center h-16">
               <div className="flex-shrink-0">
-              <Link exact to="/"><H1 h1="Coffemap.berlin" /></Link>
+              <Link exact to="/"><div className="font-black text-3xl">Coffeemap</div></Link>
 
               </div>
               <div className="hidden md:block">
@@ -126,7 +126,7 @@ function Nav() {
                         </li>: <span></span>}
                         {!logged?<li className="px-3 py-2 whitespace-nowrap text-xl text-base font-bold text-green-400 hover:text-green-500">
                             <NavLink className="block text-green-400" to="/login">Login</NavLink> 
-                        </li>: <li className="px-1 py-2 whitespace-nowrap text-xl text-base font-bold text-green-400 hover:text-green-500"><NavLink to="" onClick={() => logout()}>Logout</NavLink></li>}
+                        </li>: <li className="px-3 py-2 whitespace-nowrap text-xl text-base font-bold text-green-400 hover:text-green-500"><NavLink to="" onClick={() => logout()}>Logout</NavLink></li>}
                         </ul>
                     </nav>
 
