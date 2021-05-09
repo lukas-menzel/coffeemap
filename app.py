@@ -1,5 +1,3 @@
-from routes import MyJSONEncoder
-from models import User
 import os
 import flask
 import flask_sqlalchemy
@@ -24,6 +22,9 @@ migrate = Migrate(app, db)
 # Initialize a local database for the example
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/db02'
 db.init_app(app)
+
+from routes import MyJSONEncoder
+from models import User
 # Initialize the flask-praetorian instance for the app
 guard.init_app(app, User)
 app.json_encoder = MyJSONEncoder
