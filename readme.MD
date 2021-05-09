@@ -71,7 +71,7 @@ Instructions for macOS and Linux distributions assume you are using a Bash shell
 
     macOS/Linux:  `export FLASK_APP=__init__.py`
     
-    Windows: `set FLASK_APP=main.py`
+    Windows: `set FLASK_APP=__init__.py`
   
 5. Enable hot reloading, debug mode, and other useful features for local development:  
 
