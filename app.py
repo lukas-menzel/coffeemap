@@ -20,6 +20,9 @@ migrate = Migrate(app, db)
 
 
 # Initialize a local database for the example
+if os.environ.get('DATABASE_URL'):
+  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+else:
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/db02'
 db.init_app(app)
 
