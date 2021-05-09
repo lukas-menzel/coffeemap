@@ -1,5 +1,5 @@
-from api import app
-from api import db
+from coffeemap import app
+from coffeemap import db
 from flask_migrate import Migrate, MigrateCommand
 
 

@@ -22,7 +22,7 @@ migrate = Migrate(app, db)
 # Initialize a local database for the example
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/db02'
 db.init_app(app)
-from api import routes
+from coffeemap import routes
 from .models import User
 from .routes import MyJSONEncoder
 # Initialize the flask-praetorian instance for the app

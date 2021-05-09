@@ -1,4 +1,4 @@
-from api import app, db, guard, cors
+from coffeemap import app, db, guard, cors
 import uuid
 import flask
 import os
