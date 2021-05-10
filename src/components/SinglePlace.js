@@ -4,18 +4,29 @@ import {
 } from "react-router-dom";
 
 export const SinglePlace = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams()
-    const [places, setPlaces] = useState([]);
+    const [places, setPlaces] = useState();
   
     useEffect(() => {
-      fetch(`/api/place/${id}`)
-        .then(response => response.json())
-        .then(data => setPlaces(data))
-    }, [id])
-  
+      fetch(`/api/place/${id}`, {})
+        .then((response) => response.json())
+        .then((data) => {
+            setPlaces(data.results);
+            setIsLoading(false);
+        });
+    }, [id]);
+
+    console.log(places)
     return (
-    <div>
-      {places.length >0 && places.map(data => <div>{data.place.name}</div>)}
-      </div>
-   )
+        <>
+        {!isLoading && (
+            <>
+    <h1>
+      </h1>
+      </>
+      )}
+      </>
+      
+   );
 }

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import H1 from "./h1"
 import {
     BrowserRouter as
     Link,
     NavLink
   } from "react-router-dom";
   import {useAuth, logout} from "../auth"
-
 import { Transition } from "@headlessui/react";
 
 
@@ -22,7 +20,7 @@ function Nav() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
           <div className="flex justify-between items-center h-16">
               <div className="flex-shrink-0">
-              <Link exact to="/"><div className="font-black text-3xl">Coffeemap</div></Link>
+              <div className="font-black text-3xl"><Link exact to="/"><a href="/">Coffeemap</a></Link></div>
 
               </div>
               <div className="hidden md:block">
