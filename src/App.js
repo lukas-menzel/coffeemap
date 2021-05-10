@@ -13,7 +13,7 @@ import PlacesPage from "./pages/places"
 import Footer from "./components/footer";
 import HomePage from "./pages/home";
 import LoginPage from "./pages/login";
-import { SinglePlace } from "./components/SinglePlace"
+import SinglePlace from "./components/SinglePlace"
 import Nav from "./components/Nav";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -49,9 +49,7 @@ export default function App() {
           <PrivateRoute path="/create-place">
             <CreatePlace />
           </PrivateRoute>
-          <Route path='/:id'>
-            <SinglePlace />
-          </Route>
+          <Route path='/:id' component={SinglePlace} />
           <Route path="/" >
             <HomePage />
           </Route>

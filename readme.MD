@@ -56,32 +56,23 @@ Instructions for macOS and Linux distributions assume you are using a Bash shell
 
 **Backend:**
 
-1. Install your virtual environment for this projekt: 
-    `python3 -m venv venv`
-  
-2. Activate your virtual environment for this project: 
-   
-    macOS/Linux: `source venv/bin/activate`
-    
-    Windows: `venv\Scripts\activate.bat`
-
-3. Download the Python modules listed in requirements.txt using pip. In case you are running Windows, uwsgi isn't availiable, so uncomment it in the requirements.txt. (uWSGI==2.0.19.1 => #uWSGI==2.0.19.1) before you execute the following command:
+1. Download the Python modules listed in requirements.txt using pip. In case you are running Windows, uwsgi isn't availiable, so uncomment it in the requirements.txt. (uWSGI==2.0.19.1 => #uWSGI==2.0.19.1) before you execute the following command:
   
     `pip install -r requirements.txt`
 
-4. Point Flask to your application: 
+2. Point Flask to your application: 
 
     macOS/Linux:  `export FLASK_APP=app.py`
     
     Windows: `set FLASK_APP=app.py`
   
-5. Enable hot reloading, debug mode, and other useful features for local development:  
+3. Enable hot reloading, debug mode, and other useful features for local development:  
 
      macOS/Linux: `export FLASK_ENV=development`
 
     Windows: `set FLASK_ENV=development`
   
-6. run your flask application: 
+4. run your flask application: 
 
     `flask run`
 
