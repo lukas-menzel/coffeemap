@@ -9,7 +9,7 @@ from flask_migrate import Migrate
 # Initialize flask app
 app = flask.Flask(__name__, static_folder='./build', static_url_path='/')
 app.debug = True
-app.config['SECRET_KEY'] = '254wsztdrhfjcghvkjlkio8i7ttgh'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
 app.config['JWT_REFRESH_LIFESPAN'] = {'days': 30}
 db = flask_sqlalchemy.SQLAlchemy(app)
@@ -22,7 +22,7 @@ migrate = Migrate(app, db)
 if os.environ.get('DATABASE_URL'):
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:n&6e-oca@localhost/db02'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 db.init_app(app)
 
 from models import User
