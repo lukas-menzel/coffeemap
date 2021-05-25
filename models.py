@@ -11,7 +11,7 @@ class User(db.Model):
     first_name = db.Column(db.String(length=50))
     last_name = db.Column(db.String(length=50))
     email = db.Column(db.String(length=255), unique=True, nullable=False)
-    password = db.Column(db.String(length=255), nullable=False)
+    password = db.Column(db.String(length=255), nullable=False, index=True)
     profile_picture_url = db.Column(db.Text)
     data_privacy_accepted = db.Column(db.Boolean(), nullable=False)
     email_marketing_accepted = db.Column(db.Boolean(), nullable=False)
@@ -54,7 +54,7 @@ class PlacesToEndUser(db.Model):
 class Place(db.Model):
     __tablename__ = 'places'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(length=255), unique=True, nullable=False)
+    name = db.Column(db.String(length=255), unique=True, nullable=False, index=True)
     street_house_number = db.Column(db.String(length=255), nullable=False)
     postcode = db.Column(db.String(length=5), nullable=False)
     city = db.Column(db.String(length=255), nullable=False)
